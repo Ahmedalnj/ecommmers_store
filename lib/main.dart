@@ -1,7 +1,18 @@
-import 'package:ecommmers_store/view/screens/main_screen.dart';
+import 'package:ecommmers_store/features/screens/home_screen.dart';
+import 'package:ecommmers_store/services/database_connection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Load environment variables
+  await dotenv.load(fileName: ".env");
+  
+  // Initialize database connection
+  await DatabaseConnection.instance.init();
+  
   runApp(const MyApp());
 }
 
@@ -15,8 +26,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
+        textTheme: GoogleFonts.nunitoSansTextTheme(),
       ),
-      home: const MainScreen(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
