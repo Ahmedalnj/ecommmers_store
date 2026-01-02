@@ -1,14 +1,15 @@
-import 'package:ecommmers_store/features/controllers/auth_controller.dart';
-import 'package:ecommmers_store/features/screens/forgot_password.dart';
+
+import 'package:ecommmers_store/features/login_in/controllers/login_controller.dart';
+import 'package:ecommmers_store/features/forgot_password/screens/forgot_password.dart';
 import 'package:ecommmers_store/features/widgets/custom_button.dart';
 import 'package:ecommmers_store/features/widgets/UniversalTextButton.dart';
 import 'package:ecommmers_store/features/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widgets/custom_text_field.dart';
-import 'sign_up_screen.dart';
-import 'home_screen.dart';
+import '../../widgets/custom_text_field.dart';
+import '../../sign_up/views/screens/sign_up_screen.dart';
+import '../../home_screen/view/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final controller = AuthController();
+  final controller = LoginController();
   final _formKey = GlobalKey<FormState>();
   bool obscurePassword = true;
 
@@ -34,9 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
     if (controller.isLoading) return;
 
     setState(() => controller.isLoading = true);
-    
+
     final success = await controller.login();
-    
+
     setState(() => controller.isLoading = false);
 
     if (!mounted) return;
@@ -47,19 +48,12 @@ class _LoginScreenState extends State<LoginScreen> {
         SnackBar(
           content: const Row(
             children: [
-              Icon(
-                Icons.check_circle,
-                color: Colors.white,
-                size: 20,
-              ),
+              Icon(Icons.check_circle, color: Colors.white, size: 20),
               SizedBox(width: 12),
               Expanded(
                 child: Text(
                   'Login successful!',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ],
@@ -88,19 +82,12 @@ class _LoginScreenState extends State<LoginScreen> {
         SnackBar(
           content: Row(
             children: [
-              const Icon(
-                Icons.error_outline,
-                color: Colors.white,
-                size: 20,
-              ),
+              const Icon(Icons.error_outline, color: Colors.white, size: 20),
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
                   controller.errorMessage ?? 'Login failed. Please try again.',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ],
@@ -115,7 +102,6 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     hint: "Enter email or phone",
                                     hight_of_field: 20,
                                     icon: FontAwesomeIcons.envelope,
-                                    controller: controller.loginEmailController,
+                                    controller: controller.emailOrPhoneController,
                                     keyboardType: TextInputType.emailAddress,
                                   ),
                                   const SizedBox(height: 16),
@@ -177,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     hight_of_field: 20,
                                     icon: FontAwesomeIcons.lock,
                                     controller:
-                                        controller.loginPasswordController,
+                                        controller.passwordController,
                                     obscureText: obscurePassword,
                                     keyboardType: TextInputType.visiblePassword,
                                     suffixIcon: IconButton(
@@ -205,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             builder: (_) =>
                                                 const ForgotPassword(),
                                           ),
-                                        )
+                                        ),
                                       },
                                       text: "Forgot Password?",
                                       suffixIcon: Icon(

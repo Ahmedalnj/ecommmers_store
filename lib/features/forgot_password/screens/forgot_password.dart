@@ -1,5 +1,6 @@
-import 'package:ecommmers_store/features/controllers/auth_controller.dart';
-import 'package:ecommmers_store/features/validators/auth_validators.dart';
+
+import 'package:ecommmers_store/features/sign_up/controllers/signup_controller.dart';
+import 'package:ecommmers_store/validators/auth_validators.dart';
 import 'package:ecommmers_store/features/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,7 +15,7 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  final controller = AuthController();
+  final controller = SignupController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -67,7 +68,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       label: 'Email',
                       hint: 'email@example.com',
                       icon: FontAwesomeIcons.envelope,
-                      controller: controller.loginEmailController,
+                      controller: controller.emailController,
                       validator: AuthValidators.validateEmail,
                       keyboardType: TextInputType.emailAddress,
                       hight_of_field: 20.0,

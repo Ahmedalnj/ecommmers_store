@@ -1,4 +1,4 @@
-import 'package:ecommmers_store/features/screens/home_screen.dart';
+import 'package:ecommmers_store/features/home_screen/view/screens/home_screen.dart';
 import 'package:ecommmers_store/services/database_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

@@ -1,4 +1,4 @@
-import 'package:ecommmers_store/features/validators/auth_validators.dart';
+import 'package:ecommmers_store/validators/auth_validators.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // Make sure you import your AuthValidators class

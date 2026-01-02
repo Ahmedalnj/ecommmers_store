@@ -1,6 +1,7 @@
-import 'package:ecommmers_store/features/controllers/auth_controller.dart';
-import 'package:ecommmers_store/features/screens/sign_up/sign_up_constants.dart';
-import 'package:ecommmers_store/features/validators/auth_validators.dart';
+
+import 'package:ecommmers_store/features/sign_up/views/widgets/sign_up_constants.dart';
+import 'package:ecommmers_store/features/sign_up/controllers/signup_controller.dart';
+import 'package:ecommmers_store/validators/auth_validators.dart';
 import 'package:ecommmers_store/features/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,25 +9,25 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 /// Form fields for SignUpScreen
 class SignUpFormFields {
   /// Username field
-  static Widget usernameField(AuthController controller) {
+  static Widget usernameField(SignupController controller) {
     return CustomTextField(
       label: "User Name",
       hint: "Enter your name",
       hight_of_field: SignUpConstants.fieldHeight,
       icon: SignUpConstants.userIcon,
-      controller: controller.signupNameController,
+      controller: controller.nameController,
       validator: AuthValidators.validateUsername,
     );
   }
 
   /// Email field
-  static Widget emailField(AuthController controller) {
+  static Widget emailField(SignupController controller) {
     return CustomTextField(
       label: "Email",
       hint: "Enter your email",
       hight_of_field: SignUpConstants.fieldHeight,
       icon: SignUpConstants.emailIcon,
-      controller: controller.signupEmailController,
+      controller: controller.emailController,
       validator: AuthValidators.validateEmail,
       keyboardType: TextInputType.emailAddress,
     );
@@ -34,7 +35,7 @@ class SignUpFormFields {
 
   /// Password field
   static Widget passwordField(
-    AuthController controller,
+    SignupController controller,
     bool obscurePassword,
     VoidCallback onToggleVisibility,
   ) {
@@ -43,7 +44,7 @@ class SignUpFormFields {
       hint: "Enter your password",
       hight_of_field: SignUpConstants.fieldHeight,
       icon: SignUpConstants.lockIcon,
-      controller: controller.signupPasswordController,
+      controller: controller.passwordController,
       obscureText: obscurePassword,
       validator: AuthValidators.validatePassword,
       showPasswordStrength: true,
@@ -61,7 +62,7 @@ class SignUpFormFields {
 
   /// Confirm password field
   static Widget confirmPasswordField(
-    AuthController controller,
+    SignupController controller,
     bool obscureConfirm,
     VoidCallback onToggleVisibility,
   ) {
@@ -70,11 +71,11 @@ class SignUpFormFields {
       hint: "Re-enter your password",
       hight_of_field: SignUpConstants.fieldHeight,
       icon: SignUpConstants.lockIcon,
-      controller: controller.signupConfirmPasswordController,
+      controller: controller.confirmPasswordController,
       obscureText: obscureConfirm,
       validator: (value) => AuthValidators.validateConfirmPassword(
         value,
-        controller.signupPasswordController.text,
+        controller.passwordController.text,
       ),
       suffixIcon: IconButton(
         icon: Icon(
@@ -89,13 +90,13 @@ class SignUpFormFields {
   }
 
   /// Phone field
-  static Widget phoneField(AuthController controller) {
+  static Widget phoneField(SignupController controller) {
     return CustomTextField(
       label: "Phone",
       hint: "Enter your phone number",
       hight_of_field: SignUpConstants.fieldHeight,
       icon: SignUpConstants.phoneIcon,
-      controller: controller.signupPhoneController,
+      controller: controller.phoneController,
       validator: (value) => AuthValidators.validatePhone(
         value,
         isRequired: false,

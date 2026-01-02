@@ -1,7 +1,8 @@
-import 'package:ecommmers_store/features/controllers/auth_controller.dart';
-import 'package:ecommmers_store/features/screens/sign_up/sign_up_constants.dart';
-import 'package:ecommmers_store/features/screens/sign_up/sign_up_form_fields.dart';
-import 'package:ecommmers_store/features/screens/sign_up/sign_up_helpers.dart';
+
+import 'package:ecommmers_store/features/sign_up/views/widgets/sign_up_constants.dart';
+import 'package:ecommmers_store/features/sign_up/views/widgets/sign_up_form_fields.dart';
+import 'package:ecommmers_store/features/sign_up/views/widgets/sign_up_helpers.dart';
+import 'package:ecommmers_store/features/sign_up/controllers/signup_controller.dart';
 import 'package:ecommmers_store/features/widgets/custom_button.dart';
 import 'package:ecommmers_store/features/widgets/social_button.dart';
 import 'package:ecommmers_store/features/widgets/UniversalTextButton.dart';
@@ -16,7 +17,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final _controller = AuthController();
+  final _controller = SignupController();
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
   bool _obscureConfirm = true;

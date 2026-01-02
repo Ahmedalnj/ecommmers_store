@@ -1,6 +1,7 @@
-import 'package:ecommmers_store/features/controllers/auth_controller.dart';
-import 'package:ecommmers_store/features/screens/login_screen.dart';
-import 'package:ecommmers_store/features/screens/sign_up/sign_up_constants.dart';
+
+import 'package:ecommmers_store/features/login_in/screens/login_screen.dart';
+import 'package:ecommmers_store/features/sign_up/views/widgets/sign_up_constants.dart';
+import 'package:ecommmers_store/features/sign_up/controllers/signup_controller.dart';
 import 'package:flutter/material.dart';
 
 /// Helper methods for SignUpScreen
@@ -84,7 +85,7 @@ class SignUpHelpers {
   /// Handle signup success
   static Future<void> handleSignupSuccess(
     BuildContext context,
-    AuthController controller,
+    SignupController controller,
   ) async {
     showSuccessSnackbar(context);
     await Future.delayed(SignUpConstants.navigationDelay);
@@ -96,7 +97,7 @@ class SignUpHelpers {
   /// Handle signup failure
   static void handleSignupFailure(
     BuildContext context,
-    AuthController controller,
+    SignupController controller,
   ) {
     showErrorSnackbar(context, controller.errorMessage);
   }

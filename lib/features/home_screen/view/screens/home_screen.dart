@@ -1,8 +1,8 @@
-import 'package:ecommmers_store/models/product.dart';
+import 'package:ecommmers_store/features/home_screen/models/product.dart';
 import 'package:flutter/material.dart';
 import '../widgets/sale_section.dart';
 import '../widgets/new_arrivals_section.dart';
-import '../widgets/bottom_nav_bar.dart';
+import '../../../widgets/bottom_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
